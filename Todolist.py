@@ -23,5 +23,5 @@ def register():
 
 
 
-if __name__=='__main__': # type "python Todolist_routes.py" to get the web server start working
+if __name__=='__main__': # type "python Todolist.py" to get the web server start working
     app.run(debug=True)
