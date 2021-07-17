@@ -1,7 +1,13 @@
 from flask import Flask, render_template, request
-from mysqlfunctions import valid_login #USE THIS TO AUTHENTICATE THE LOGIN
+import mysqlfunctions
 
 app = Flask(__name__) # instantiating the flask module to this variable so python knows where to look for
+
+from flask import Flask, render_template
+from forms import RegistrationForm, LoginForm
+
+app = Flask(__name__) # instatiating the flask module to this variable so python knows where to look for 
+app.config['SECRET_KEY'] = 'c5b001929f7e9cba838cd7a922db0dec'
 
 # Routes
 @app.route("/") #default page that opens
@@ -19,6 +25,17 @@ def login():
 def register():
     #return "this is the sign up page"
     return render_template('register.html')
+    return render_template('home.html')
+
+@app.route("/login") 
+def login():
+    form = LoginForm()
+    return render_template('login.html', title="Login", form=form)
+
+@app.route("/register") #aka sign-up page- where a new user makes an account
+def register():
+    form = RegistrationForm()
+    return render_template('register.html', title="Register", form=form)
 
 @app.route("/report")
 def report():
