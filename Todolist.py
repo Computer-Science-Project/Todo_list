@@ -18,17 +18,6 @@ def home():
 
 @app.route("/login") 
 def login():
-    #return "this is the login page"   
-    return render_template('login.html')
-
-@app.route("/register") #aka sign-up page- where a new user makes an account
-def register():
-    #return "this is the sign up page"
-    return render_template('register.html')
-    return render_template('home.html')
-
-@app.route("/login") 
-def login():
     form = LoginForm()
     return render_template('login.html', title="Login", form=form)
 
